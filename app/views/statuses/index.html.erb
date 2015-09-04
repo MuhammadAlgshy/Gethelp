@@ -12,9 +12,11 @@
       <p><%= status.content %></p>
       <div class="meta">
         <%= link_to time_ago_in_words(status.created_at) + " ago", status %> 
+         <% if !user_signed_in? %>
+            <%= toggle_get_button(status, user) %>
+          <%end%>
         <span class="admin">
-          | <%= link_to "Edit", edit_status_path(status) %> | 
-          <%= link_to "Delete", status, method: :delete, data: { confirm: "Are you sure your want to delete this status?"} %>
+         
      
         </span>
       </div>

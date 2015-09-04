@@ -25,4 +25,3 @@ class CreateMakeFlaggableTables < ActiveRecord::Migration
     drop_table :flaggings
   end
 end
-

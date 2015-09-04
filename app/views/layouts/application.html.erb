@@ -14,6 +14,8 @@
 				<a href="#" class="brand"> GET </a>
 				<ul class="nav navbar-nav">
 					<li role="presentation" class="active"> <%= link_to "Home", feed_path %> </li>
+					<li role="presentation" class=""> <%= link_to "Groups", allgroups_path %> </li>
+					
 				</ul>
 				<ul class="nav pull-right">
 					<% if user_signed_in? %>
@@ -37,6 +39,7 @@
 <% end %>
 	<br>
 <%= yield %>
+
 </div>
 
 

@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+<div class="page-header">
+<h1><%= link_to @group.name,showgroup_path(@group.id) %></h1><br>
+<h5> <%= @group.description %> </h5><hr>
+<% if @statuses %>
+  <% @statuses.each do |status| %>
+    <div class="well">
+      <%= status.content %>
+      <hr />
+      <%= link_to time_ago_in_words(status.created_at)+" ago"  , status_path(status) %> 
+        </div>
+  <% end %>
+<% end %>

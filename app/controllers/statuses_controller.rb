@@ -3,9 +3,18 @@ class StatusesController < ApplicationController
 
   # GET /statuses
   # GET /statuses.json
+  def get
+    @c_user=current_user
+    @status = Status.find(params[:id])
+    @c_user.flag(@status, :get)
+    redirect_to statuses_path, notice => "You are Get the status"
+
+  end
+
   def index
-    @user =  User.first
+    @user =  User.all
     @statuses = Status.all
+    @groups = Group.all
   end
 
   # GET /statuses/1
@@ -71,6 +80,6 @@ class StatusesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def status_params
-      params.require(:status).permit(:content, :user_id)
+      params.require(:status).permit(:content, :user_id,:group_id)
     end
 end
