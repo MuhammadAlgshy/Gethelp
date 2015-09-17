@@ -9,8 +9,12 @@
       <%= status.content %>
       <hr />
       <%= link_to time_ago_in_words(status.created_at)+" ago"  , status_path(status) %> 
+      <% if user_signed_in?%>
+<% if status.user.full_name == current_user.full_name %>
        | <%= link_to "Edit",edit_status_path(status) %> | 
          <%= link_to "Delete", status, method: :delete , data: { Confirm: "Are You Sure you delete the status" }%>
+         <% end %>
+         <% end %>
     </div>
   <% end %>
 <% end %>

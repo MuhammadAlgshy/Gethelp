@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
   
+  resources :statuses do 
+
+    resources :comments
+    
+     
+  end
   resources :groups
      get 'groups/:id', to: 'groups#show', as: :showgroup
      get 'profiles/show'
@@ -60,8 +66,7 @@ end
 
   # Example resource route with more complex sub-resources:
   #   resources :products do
-  #     resources :comments
-  #     resources :sales do
+  #     #     resources :sales do
   #       get 'recent', on: :collection
   #     end
   #   end

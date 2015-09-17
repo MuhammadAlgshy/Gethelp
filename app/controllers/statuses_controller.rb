@@ -15,6 +15,7 @@ class StatusesController < ApplicationController
     @user =  User.all
     @statuses = Status.all
     @groups = Group.all
+    @comment = Comment.all
   end
 
   # GET /statuses/1
@@ -25,6 +26,7 @@ class StatusesController < ApplicationController
   # GET /statuses/new
   def new
     @status = Status.new
+   
   end
 
   # GET /statuses/1/edit
@@ -35,6 +37,8 @@ class StatusesController < ApplicationController
   # POST /statuses.json
   def create
     @status = Status.new(status_params)
+    @status.user = current_user
+
     #@status = @user.statuses.new(status_params)
 
     respond_to do |format|

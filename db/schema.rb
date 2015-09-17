@@ -11,16 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150904135520) do
+ActiveRecord::Schema.define(version: 20150914115348) do
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "pin_id"
+    t.integer  "status_id"
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
-  add_index "comments", ["pin_id"], name: "index_comments_on_pin_id"
+  add_index "comments", ["status_id"], name: "index_comments_on_status_id"
 
   create_table "flaggings", force: :cascade do |t|
     t.string   "flaggable_type"

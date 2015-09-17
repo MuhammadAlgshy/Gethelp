@@ -2,11 +2,32 @@
 
 
  <b> Name : </b>
-     <%= link_to current_user.first_name ,showprofile_path(current_user.profile_name) %>
+     <%= link_to  @status.user.full_name,showprofile_path( @status.user.first_name + @status.user.last_name ) %> <br/>
+     <b> Group : </b> <%= link_to  @status.group.name, @status.group %>
+
 <p>
   <strong>Content:</strong>
   <%= @status.content %>
 </p>
-
+<% if user_signed_in?%>
+<% if @status.user.full_name == current_user.full_name %>
 <%= link_to 'Edit', edit_status_path(@status) %> |
-<%= link_to 'Back', statuses_path %>
+<%= link_to 'Back', statuses_path %><br>
+<br>
+<h4>Comments </h4> 
+	<div id="Comments">
+	
+	</div>
+	<%= simple_form_for [@status,Comment.new]  do |f| %>
+	<p> 
+	<%= f.input :content, :label => "New Comment", as: :text, input_html: {row: "3"} %>
+	</p>
+	<p>
+	<%= f.submit "Add Comment", class: "btn btn-primary" %> </p>
+	<%= render :partial => @status.comments %>
+	<%end%>
+	</div>
+
+
+<%end%>
+<%end%>

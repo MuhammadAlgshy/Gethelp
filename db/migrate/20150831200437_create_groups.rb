@@ -16,5 +16,6 @@ class CreateGroups < ActiveRecord::Migration
     add_index :group_memberships, :group_id
     add_index :group_memberships, :group_name
   end
+end
 
 end
